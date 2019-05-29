@@ -16,7 +16,7 @@ public class Crawler {
 		for (int k = 0; k<pic.length;k++)
 		{
 			url = new URL(pic[k]);
-			FileOutputStream fos = new FileOutputStream(pic[k].substring(pic[k].length() - 14),false);
+			FileOutputStream fos = new FileOutputStream(k+1+".jpg",false);
 			InputStream is = url.openStream();
 			int r = 0;
 			System.out.println("Downloading - " +(k+1));
