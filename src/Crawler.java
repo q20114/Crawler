@@ -23,6 +23,28 @@ public class Crawler {
             while ( ( r = is.read() ) != -1){
                 fos.write(r);
              }
+            
+            /* //==Solution 1.直接讀入
+            while ( ( r = is.read() ) != -1){
+                fos.write(r);
+
+             } */
+
+           /* //==Solution 2.讀到 buffer , <<速度較快>>
+            byte[] buf = new byte[100000]; // 100kb buffer
+            while ( ( r = is.read(buf) ) != -1){
+                fos.write(buf,0,r);
+            }*/
+
+            /*//==Solution 3.讀到 buffer , <<較快一點 & 精準的寫法>>
+            //因為不能保證連線的品質，或是檔案較大的時候，也許會有lose
+            int chunkSize = 1024 * 8;
+            byte[] buf = new byte[chunkSize];
+            int readLen;
+            while ((readLen = is.read( buf, 0, buf.length)) != -1) {
+               fos.write(buf, 0, readLen);  
+            }*/
+            
 			is.close();
 			fos.close();
 		}

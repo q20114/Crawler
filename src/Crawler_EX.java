@@ -15,9 +15,6 @@ public class Crawler_EX {
 		//String content ="<html>...<div><img alt ='xxx' src='yyy'><img alt='xxx' src='mmm'></div></html>"
 		URL targeturl=null;
 		URL url=null;
-		URL url=null;
-		URL url=null;
-		URL url=null;
 		try { String[] pic = {
 				"https://pbs.twimg.com/media/D7vAJCNU0AEP-hX.jpg",    
                 "http://pic.pimg.tw/robertvmp/1171610321.jpg"};
@@ -32,20 +29,20 @@ public class Crawler_EX {
                 fos.write(r);
              }
             
-            /* //==Solution 1.Ö±½Ó×xÈë
+            /* //==Solution 1.ç›´æ¥è®€å…¥
             while ( ( r = is.read() ) != -1){
                 fos.write(r);
 
              } */
 
-           /* //==Solution 2.×xµ½ buffer , <<ËÙ¶Èİ^¿ì>>
+           /* //==Solution 2.è®€åˆ° buffer , <<é€Ÿåº¦è¼ƒå¿«>>
             byte[] buf = new byte[100000]; // 100kb buffer
             while ( ( r = is.read(buf) ) != -1){
                 fos.write(buf,0,r);
             }*/
 
-            /*//==Solution 3.×xµ½ buffer , <<İ^¿ìÒ»üc & ¾«œÊµÄŒ‘·¨>>
-            //Òòé²»ÄÜ±£×CßB¾€µÄÆ·Ù|£¬»òÊÇ™n°¸İ^´óµÄ•rºò£¬Ò²ÔS•şÓĞlose
+            /*//==Solution 3.è®€åˆ° buffer , <<è¼ƒå¿«ä¸€é» & ç²¾æº–çš„å¯«æ³•>>
+            //å› ç‚ºä¸èƒ½ä¿è­‰é€£ç·šçš„å“è³ªï¼Œæˆ–æ˜¯æª”æ¡ˆè¼ƒå¤§çš„æ™‚å€™ï¼Œä¹Ÿè¨±æœƒæœ‰lose
             int chunkSize = 1024 * 8;
             byte[] buf = new byte[chunkSize];
             int readLen;
