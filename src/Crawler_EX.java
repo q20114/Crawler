@@ -15,6 +15,9 @@ public class Crawler_EX {
 		//String content ="<html>...<div><img alt ='xxx' src='yyy'><img alt='xxx' src='mmm'></div></html>"
 		URL targeturl=null;
 		URL url=null;
+		URL url=null;
+		URL url=null;
+		URL url=null;
 		try { String[] pic = {
 				"https://pbs.twimg.com/media/D7vAJCNU0AEP-hX.jpg",    
                 "http://pic.pimg.tw/robertvmp/1171610321.jpg"};
