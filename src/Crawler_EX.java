@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class Crawler_EX {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MalformedURLException {
 		// TODO Auto-generated method stub
 		Scanner sca = new Scanner(System.in);
 		String str = sca.nextLine();
 		//String content ="<html>...<div><img alt ='xxx' src='yyy'><img alt='xxx' src='mmm'></div></html>"
-		URL targeturl=null;
+		URL targeturl = new URL(str);
 		URL url=null;
 		try { String[] pic = {
 				"https://pbs.twimg.com/media/D7vAJCNU0AEP-hX.jpg",    
