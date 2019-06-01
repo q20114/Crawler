@@ -6,8 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.Scanner;
 
 public class Crawler_EX {
@@ -18,16 +20,20 @@ public class Crawler_EX {
                 new InputStreamReader(System.in)); //輸入網址
 		String str = input.readLine();
 		URL targeturl = new URL(str);
+		URLConnection urlc = targeturl.openConnection(); 
+		urlc.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2"); 
 		//讀取前面輸入網站之HTML
-		BufferedReader reader = new BufferedReader(new InputStreamReader(targeturl.openStream())); 
+		//BufferedReader reader = new BufferedReader(new InputStreamReader(targeturl.openStream())); 
 	    //BufferedWriter writer = new BufferedWriter(new FileWriter("data.html"));
-		String line;
-	      while ((line = reader.readLine()) != null) {
-	          System.out.println(line);
+		  Reader in = new InputStreamReader(urlc.getInputStream(),"UTF-8");
+		int data;
+	      while ((data = in.read()) != -1) {
+	    	    System.out.print((char) data);
+	    	    data = in.read();
 	          //writer.write(line);
 	          //writer.newLine();
 	       }
-	       reader.close();
+	       in.close();
 	       //writer.close();
 		/*URL url=null;
 		try { String[] pic = {
