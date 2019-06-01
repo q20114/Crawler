@@ -1,20 +1,35 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
 public class Crawler_EX {
 
-	public static void main(String[] args) throws MalformedURLException {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Scanner sca = new Scanner(System.in);
-		String str = sca.nextLine();
-		//String content ="<html>...<div><img alt ='xxx' src='yyy'><img alt='xxx' src='mmm'></div></html>"
+        BufferedReader input = new BufferedReader(
+                new InputStreamReader(System.in)); //輸入網址
+		String str = input.readLine();
 		URL targeturl = new URL(str);
-		URL url=null;
+		//讀取前面輸入網站之HTML
+		BufferedReader reader = new BufferedReader(new InputStreamReader(targeturl.openStream())); 
+	    //BufferedWriter writer = new BufferedWriter(new FileWriter("data.html"));
+		String line;
+	      while ((line = reader.readLine()) != null) {
+	          System.out.println(line);
+	          //writer.write(line);
+	          //writer.newLine();
+	       }
+	       reader.close();
+	       //writer.close();
+		/*URL url=null;
 		try { String[] pic = {
 				"https://pbs.twimg.com/media/D7vAJCNU0AEP-hX.jpg",    
                 "http://pic.pimg.tw/robertvmp/1171610321.jpg"};
@@ -50,7 +65,7 @@ public class Crawler_EX {
                fos.write(buf, 0, readLen);  
             }*/
             
-			is.close();
+		/*	is.close();
 			fos.close();
 		}
 		System.out.println("Download Finished. ");
@@ -62,7 +77,7 @@ public class Crawler_EX {
 	        e.printStackTrace();
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	    }
+	    } */
 	}
 
 }
